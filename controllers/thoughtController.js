@@ -1,9 +1,8 @@
-// ObjectId() method for converting studentId string into an ObjectId for querying database
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 module.exports = {
-//   Get all Thought
+//   Get all Thoughts
   getThoughts(req, res) {
     Thought.find()
       .then((thoughts) => res.json(thoughts))
@@ -11,7 +10,7 @@ module.exports = {
   },
 //    Get a Thought
    getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.ThoughtId })
+    Thought.findOne({ _id: req.params.thoughtId })
       .select('-__v')
       .then((thought) =>
         !thought
@@ -51,7 +50,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-//   Delete thought of User
+//   Delete thought from user
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
@@ -84,7 +83,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-// Delete reaction for the thought 
+//Delete reaction from the thought 
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

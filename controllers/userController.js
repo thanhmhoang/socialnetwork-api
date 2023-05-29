@@ -7,7 +7,7 @@ module.exports = {
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
-//   Get a Single User
+//   Get a User
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.UserId })
       .select('-__v')
@@ -18,7 +18,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-//   Create a User
+  // Create a User
   createUser(req, res) {
     User.create(req.body)
       .then((user) => res.json(user))
@@ -29,7 +29,7 @@ module.exports = {
   },
 //   Delete a User
   deleteUser(req, res) {
-    User.findOneAndDelete({ _id: req.params.userId })
+    User.findOneAndDelete({ _id: req.params.UserId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })
@@ -38,10 +38,10 @@ module.exports = {
       .then(() => res.json({ message: "User and user's thoughts deleted!" }))
       .catch((err) => res.status(500).json(err));
   },
-//   Update a User
+//   Update a user
   updateUser(req, res) {
     User.findOneAndUpdate(
-      { _id: req.params.userId },
+      { _id: req.params.UserId },
       { $set: req.body },
       { runValidators: true, new: true }
     )
@@ -52,7 +52,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-//   Add a Friend
+//   Add a friend 
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -66,7 +66,6 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-//   Delete a friend
   deleteFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
