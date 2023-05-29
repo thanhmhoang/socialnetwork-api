@@ -59,7 +59,7 @@ npm start
 ```
 Users can then run the application in Insomnia to GET data for each route(User, Thought, Reaction, Friend) as well as CREATE, UPDATE, and DELETE data in those routes.
 
-Follow this link for a video walk-through of the application: 
+Follow this link for a video walk-through of the application: https://youtu.be/v5oELK_aGQY
 
 
 ## Credits
